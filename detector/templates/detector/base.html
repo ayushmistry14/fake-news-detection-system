@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detector</title>
+    
+    <!-- FAVICON - Only SVG (no .ico to avoid 404) -->
+    <link rel="icon" href="{% static 'images/favicon.svg' %}" type="image/svg+xml">
+    <link rel="shortcut icon" href="{% static 'images/favicon.svg' %}" type="image/svg+xml">
+    
+    <!-- Styles with cache-busting version -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=20260722">
+</head>
+<body>
+
+
+{% block header %}
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: #4f46e5; box-shadow: 0 2px 15px rgba(79,70,229,0.3); padding: 10px 0;">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="{% url 'detector:home' %}" style="overflow: visible;">
+            <!-- Logo: logo-light.svg for dark background -->
+            <img src="{% static 'images/logo-light.svg' %}" alt="Fake News Detector" style="height: 45px; width: auto; display: block;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'detector:home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if 'check' in request.path %}active{% endif %}" href="{% url 'detector:check_news' %}">Check News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if 'about' in request.path %}active{% endif %}" href="{% url 'detector:about' %}">About</a>
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'detector:dashboard' %}"><i class="fas fa-chart-pie me-1"></i>Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'detector:logout' %}"><i class="fas fa-sign-out-alt me-1"></i>Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-light text-dark px-3 rounded-pill" href="{% url 'detector:login' %}">
+                            <i class="fas fa-sign-in-alt me-1"></i>Login
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% if messages %}
+<div class="container mt-3">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+<main>
+    {% block content %}{% endblock %}
+</main>
+{% block footer %}
+<footer class="footer" style="background: #1e1b4b; color: rgba(255,255,255,0.8); padding: 30px 0; margin-top: 40px;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <p class="mb-0">&copy; 2026 Fake News Detector. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <a href="mailto:ayushmistry1425@gmail.com" class="text-white-50 me-3" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://github.com/ayushmistry14" target="_blank" rel="noopener noreferrer" class="text-white-50 me-3" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/ayush612/" class="text-white-50" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}
+
+<!-- =============================================== -->
+<!-- SCRIPTS                                         -->
+<!-- =============================================== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'js/scripts.js' %}?v=20260722"></script>
+</body>
+</html>

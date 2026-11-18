@@ -1,0 +1,87 @@
+{% extends 'detector/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="about-page">
+    <div class="container py-4 py-lg-5">
+        <div class="row g-4 align-items-stretch">
+            <div class="col-lg-6">
+                <div class="about-card about-card-left">
+                    <span class="badge-about">About This Project</span>
+                    <h1 class="about-title">Fake News Detection System</h1>
+                    <p class="about-description">
+                        This project uses <strong>Machine Learning</strong> and <strong>Natural Language Processing</strong> to classify news articles as Fake or Real. It provides a prediction label, confidence score, dashboard result view, and user account flow for a complete academic demo.
+                    </p>
+                    
+                    <div class="developer-section">
+                        <h5 class="developer-heading">👨‍💻 Developer Details</h5>
+                        <div class="developer-row">
+                            <span class="developer-label">Name</span>
+                            <span class="developer-value">Ayush Mistry</span>
+                        </div>
+                        <div class="developer-row">
+                            <span class="developer-label">Email</span>
+                            <span class="developer-value">ayushmistry1425@gmail.com</span>
+                        </div>
+                        <div class="developer-row">
+                            <span class="developer-label">Project Area</span>
+                            <span class="developer-value">Machine Learning and NLP</span>
+                        </div>
+                    </div>
+  
+                    <div class="contact-buttons">
+                        <a href="mailto:ayushmistry1425@gmail.com" class="btn btn-contact btn-contact-email">
+                            <i class="fas fa-envelope me-2"></i>Email Me
+                        </a>
+                        <a href="https://github.com/ayushmistry14" target="_blank" class="btn btn-contact btn-contact-github">
+                            <i class="fab fa-github me-2"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="right-column-wrapper">
+                    <div class="row g-3 flex-grow-1">
+                        <!-- Card 1 - Dataset -->
+                        <div class="col-6">
+                            <div class="feature-card">
+                                <div class="feature-icon" style="color: #4f46e5;">📊</div>
+                                <h6 class="feature-title">Dataset</h6>
+                                <p class="feature-description">Real and fake news from 6 categories</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Card 2 - Algorithm -->
+                        <div class="col-6">
+                            <div class="feature-card">
+                                <div class="feature-icon" style="color: #f59e0b;">🧠</div>
+                                <h6 class="feature-title">Algorithm</h6>
+                                <p class="feature-description">TF-IDF + Passive Aggressive Classifier</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Card 3 - Output -->
+                        <div class="col-6">
+                            <div class="feature-card">
+                                <div class="feature-icon" style="color: #10b981;">📈</div>
+                                <h6 class="feature-title">Output</h6>
+                                <p class="feature-description">Prediction with confidence score</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Card 4 - Use Case -->
+                        <div class="col-6">
+                            <div class="feature-card">
+                                <div class="feature-icon" style="color: #8b5cf6;">🎯</div>
+                                <h6 class="feature-title">Use Case</h6>
+                                <p class="feature-description">Academic research &amp; demo review</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

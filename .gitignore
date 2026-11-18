@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+env/
+venv/
+.venv/
+
+# Local secrets and databases
+.env
+db.sqlite3
+*.sqlite3
+
+# Generated files
+media/
+staticfiles/
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Large/raw datasets
+*.csv
+
+detector/dataset/*.csv.backup
+documentation/

@@ -1,0 +1,98 @@
+{% extends 'detector/base.html' %}
+{% load static %}
+
+<!-- HIDE HEADER -->
+{% block header %}{% endblock %}
+
+<!-- CONTENT -->
+{% block content %}
+<section class="auth-page auth-login">
+    <div class="auth-wrapper">
+        <div class="auth-shell">
+            <div class="auth-row">
+                
+                <!-- Left Panel - Login Theme -->
+                <div class="auth-col auth-col-left auth-login-panel">
+                    <div class="auth-intro">
+                        <span class="auth-kicker">🔐 Secure Login</span>
+                        <h1>Welcome back, <br>Researcher!</h1>
+                        <p>Sign in to analyze news articles using state-of-the-art ML models.</p>
+                        
+                        <div class="auth-benefits">
+                            <div>
+                                <span class="auth-bullet">1</span>
+                                <span>Secure authentication with your credentials</span>
+                            </div>
+                            <div>
+                                <span class="auth-bullet">2</span>
+                                <span>Real-time AI-powered news classification</span>
+                            </div>
+                            <div>
+                                <span class="auth-bullet">3</span>
+                                <span>Instant fact-checking with confidence scores</span>
+                            </div>
+                        </div>
+
+                        <div class="auth-stats">
+                            <div>
+                                <strong>98.7%</strong>
+                                <span>Model Accuracy</span>
+                            </div>
+                            <div>
+                                <strong>5K+</strong>
+                                <span>Articles Analyzed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel - Login Form -->
+                <div class="auth-col auth-col-right auth-form-panel">
+                    <div class="auth-form-container">
+                        <div class="auth-header">
+                            <span class="auth-label">Access Account</span>
+                            <h2>Sign in</h2>
+                            <p>Use your username and password to continue.</p>
+                        </div>
+
+                        <form method="post" class="auth-form" novalidate>
+                            {% csrf_token %}
+                            {% if form.non_field_errors %}
+                                <div class="alert alert-danger auth-alert">{{ form.non_field_errors }}</div>
+                            {% endif %}
+
+                            <div class="form-group">
+                                <label for="id_username">Username</label>
+                                {{ form.username }}
+                                {% if form.username.errors %}
+                                    <div class="error-text">{{ form.username.errors|striptags }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_password">Password</label>
+                                {{ form.password }}
+                                {% if form.password.errors %}
+                                    <div class="error-text">{{ form.password.errors|striptags }}</div>
+                                {% endif %}
+                            </div>
+
+                            <button type="submit" class="btn-submit">
+                                <i class="fas fa-sign-in-alt me-2"></i>Sign in
+                            </button>
+                        </form>
+
+                        <div class="auth-footer">
+                            <span>New here?</span>
+                            <a href="{% url 'detector:register' %}">Create an account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+<!-- HIDE FOOTER -->
+{% block footer %}{% endblock %}
